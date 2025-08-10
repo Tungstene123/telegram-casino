@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Telegram Casino Mini App</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Telegram Web App script is provided by Telegram in-app; load fallback safe stub when testing in browser -->
+  <script>
+  // Minimal stub for testing outside Telegram
+  if (!window.TelegramWebApp) {
+    window.TelegramWebApp = {
+      initData: null,
+      initDataUnsafe: null,
+      isExpanded: false,
+      expand: ()=>console.log('expand()'),
+      close: ()=>console.log('close()'),
+      onEvent: ()=>{},
+      offEvent: ()=>{},
+      BackButton: { isVisible: false, show: ()=>{}, hide: ()=>{}},
+    };
+  }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🎰 Telegram Casino (Test)</h1>
+      <div id="balance" class="balance">Balance: <span id="bal-amt">500</span> TC</div>
+    </header>
+
+    <main>
+      <section class="controls card">
+        <label>Bet: <input type="number" id="bet" value="10" min="1"></label>
+        <button id="free">Get Free Credits (+1000)</button>
+        <label><input type="checkbox" id="cheat"> Cheater Mode</label>
+      </section>
+
+      <section class="games card">
+        <div class="game">
+          <h3>Coin Flip</h3>
+          <div class="actions">
+            <button data-game="coin" data-choice="heads">Heads</button>
+            <button data-game="coin" data-choice="tails">Tails</button>
+          </div>
+        </div>
+
+        <div class="game">
+          <h3>Slots</h3>
+          <div id="slots" class="slots">🎰 🎰 🎰</div>
+          <button id="spin">Spin</button>
+        </div>
+
+        <div class="game">
+          <h3>Roulette (Red / Black)</h3>
+          <div class="actions">
+            <button data-game="roulette" data-type="color" data-val="red">Red</button>
+            <button data-game="roulette" data-type="color" data-val="black">Black</button>
+          </div>
+        </div>
+
+        <div class="game">
+          <h3>High Card</h3>
+          <button id="highcard">Play</button>
+        </div>
+      </section>
+
+      <section class="log card">
+        <h4>Activity</h4>
+        <ul id="log"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <small>Demo only. Virtual TestCredits. Do not use for real gambling.</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
